@@ -1,19 +1,26 @@
 <?php
 
-
 require_once 'smarty/config.ini.php';
+
+$pagina =   new stdClass();
 
 $acao=isset($_GET['acao'])?$_GET['acao']:'';
 
 
-$pagina =   new stdClass();
-
-
-$pagina->titulo =   "Cadastrar cliente";
 
 
 
 $smarty->assign('pagina',$pagina);
 
-
- $smarty->display('cliente/lista.tpl');
+switch($acao){
+    case'cadastrar':            
+            $pagina->titulo =   "Cadastrar cliente";
+            $smarty->display('cliente/formulario.tpl');
+            break;
+    case'listar':            
+            $pagina->titulo =   "Lista de Clientes";
+            $smarty->display('cliente/lista.tpl');
+            break;
+ 
+ 
+}
