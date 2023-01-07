@@ -2,7 +2,6 @@
 <head>
 
 <title>Projeto Locadora</title>
-<script type="text/javascript" src="js/formulario/home.js"> </script>
 
 <head>
 <body>
@@ -36,24 +35,16 @@
 						</tr>
 					  </thead>
 					  <tbody>
+					  {foreach $array_cliente item=$cliente}
 						<tr>
-						  <th scope="row">1</th>
-						  <td>cliente 01</td>
-						  <td>Otto</td>
-						  <td><img src="imagens/icones/lupa.png" style="width:15x;height:15px" ></td>
+						  <th scope="row">{$cliente.iduser}</th>
+						  <td>{$cliente.nome}</td>
+						  <td>{$cliente.email}</td>
+						  <td>
+                                                      <button type="button" class="btn btn-info btn-editar" data-iduser={$cliente.iduser} ><i class="medium material-icons" style="font-size: 16px;">create</i></button>
+                                                      <button type="button" class="btn btn-danger btn-excluir" data-iduser={$cliente.iduser}><i class="medium material-icons" style="font-size: 16px;">delete</i></button>                                                                                                          </td>
 						</tr>
-						<tr>
-						  <th scope="row">2</th>
-						  <td>cliente 02</td>
-						  <td>cliente2@gmail.com</td>
-						  <td></td>
-						</tr>
-						<tr>
-						  <th scope="row">3</th>
-						  <td>cliente 03</td>
-						  <td>cliente3@gmail.com</td>
-						  <td></td>
-						</tr>
+						{/foreach}
 					  </tbody>
 					</table>
 					</div>
@@ -62,7 +53,7 @@
     </tr>
 </table>
 
-
+<script type="text/javascript" src="js/formulario/cliente.js"> </script>
 </body>
 </html>
 

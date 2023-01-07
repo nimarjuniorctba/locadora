@@ -1,3 +1,6 @@
+.errado{background: #f9d4ce;border: 2px solid red;}
+.certo{background: #d5f1d5;border: 2px solid green;}
+
 .barra-top{
 
 	background:#4c8ec3;
@@ -9,3 +12,7 @@
 }
 
 
+.obrigatorio{
+	color: red;
+	
+}
