@@ -1,0 +1,15 @@
+
+
+
+	'Banco de Dados' - ( CRIAÇÂO DIA 05/01/2023 )
+			mod_clientes
+			mod_titulos
+			mod_configurações(PENDENTE)
+			mod_locacao			
+			mod_itens_locacao			
+
+	'templates+js+php'
+			-clientes
+			-titulos
+			-configurações
+	

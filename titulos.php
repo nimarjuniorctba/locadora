@@ -10,9 +10,6 @@ $acao=isset($_GET['acao'])?$_GET['acao']:'listar';
 $pagina->acao   =   $acao;
 
 
-//var_dump($_REQUEST);
-//exit;
-
 if($acao=='alterar'){
     
     $id=isset($_GET['id'])?$_GET['id']:'';    
@@ -59,17 +56,18 @@ if($acao=='listar'){
     
 }
 
-$smarty->assign('pagina',$pagina);
+    switch($acao){
+        case'alterar':            
+        case'cadastrar':                          
+                $pagina->titulo =   $acao=='cadastrar'?"Cadastrar titulos":"Alterar titulos";
+                $smarty->assign('pagina',$pagina);
+                $smarty->display('titulos/formulario.tpl');
+                break;
+        case'listar':            
+                $pagina->titulo =   "Lista de titulos";
+                $smarty->assign('pagina',$pagina);
+                $smarty->display('titulos/lista.tpl');
+                break;
 
-switch($acao){
-    case'alterar':            
-    case'cadastrar':                          
-            $pagina->titulo =   $acao=='cadastrar'?"Cadastrar titulos":"Alterar titulos";
-            $smarty->display('titulos/formulario.tpl');
-            break;
-    case'listar':            
-            $pagina->titulo =   "Lista de titulos";
-            $smarty->display('titulos/lista.tpl');
-            break;
+    }
 
-}

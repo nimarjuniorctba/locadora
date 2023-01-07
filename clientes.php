@@ -49,16 +49,16 @@ if($acao=='listar'){
     
 }
 
-$smarty->assign('pagina',$pagina);
-
 switch($acao){
     case'alterar':            
     case'cadastrar':                          
             $pagina->titulo =   $acao=='cadastrar'?"Cadastrar cliente":"Alterar cliente";
+            $smarty->assign('pagina',$pagina);
             $smarty->display('cliente/formulario.tpl');
             break;
     case'listar':            
             $pagina->titulo =   "Lista de Clientes";
+            $smarty->assign('pagina',$pagina);
             $smarty->display('cliente/lista.tpl');
             break;
 
