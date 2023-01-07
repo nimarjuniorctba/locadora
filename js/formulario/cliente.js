@@ -25,7 +25,7 @@ var email					=	$("#cli_email");
 
 	$("#submit").click(function(){
 		
-		if(validaNome() && validaEmail()){			
+		if(validaNome() & validaEmail()){			
 			return true;
 		}else{
 			return false;

@@ -38,27 +38,27 @@
 								<tr>
 								  <td>Codigo</td>
 								  <td>
-									<input type="text" class="form-control"  aria-label="Username" disabled aria-describedby="basic-addon1" {if $pagina->acao=='alterar'} value="{$cliente->id}" {/if}>
+									<input type="text" class="form-control"disabled{if $pagina->acao=='alterar'} value="{$cliente->id}" {/if}>
 								  </td>
 								</tr>
 							{/if}						
 							<tr>
 							  <td>Nome<span class="obrigatorio">*<span></td>
 							  <td>
-								<input type="text" class="form-control" id="cli_nome" name="cli_nome" aria-label="Username" aria-describedby="basic-addon1" {if $pagina->acao=='alterar'} value="{$cliente->nome}" {/if}>
+								<input type="text" class="form-control" id="cli_nome" name="cli_nome"{if $pagina->acao=='alterar'} value="{$cliente->nome}" {/if}>
 							  </td>
 							</tr>
 							<tr>
 							  <td>E-mail<span class="obrigatorio">*<span></td>
 							  <td>
 							  
-									<input type="text" class="form-control" id="cli_email" name="cli_email" aria-label="Username" aria-describedby="basic-addon1" {if $pagina->acao=='alterar'} value="{$cliente->email}" {/if}>						  
+									<input type="text" class="form-control" id="cli_email" name="cli_email"{if $pagina->acao=='alterar'} value="{$cliente->email}" {/if}>						  
 							  
 							  </td>
 							</tr>
 							<tr>
 								<td scope="col"  colspan="2">
-									<span style="float:right;"><button type="submit" name="submit" value="{$pagina->acao}" class="btn btn-success">{if $pagina->acao=='cadastrar'}Cadastrar{else}Alterar{/if}</button></span>
+									<span style="float:right;"><button type="submit" name="submit"  id="submit" value="{$pagina->acao}" class="btn btn-success">{if $pagina->acao=='cadastrar'}Cadastrar{else}Alterar{/if}</button></span>
 								</td>
 							</tr>
 
