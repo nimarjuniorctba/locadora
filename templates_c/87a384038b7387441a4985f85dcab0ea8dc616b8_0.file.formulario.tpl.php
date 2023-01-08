@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2023-01-07 18:49:23
+/* Smarty version 4.1.0, created on 2023-01-07 20:09:02
   from 'C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\Diversos\locadora\template\cliente\formulario.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63b9b0a396f801_73311075',
+  'unifunc' => 'content_63b9c34ed5bc31_48763069',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:topo.tpl' => 1,
   ),
 ),false)) {
-function content_63b9b0a396f801_73311075 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63b9c34ed5bc31_48763069 (Smarty_Internal_Template $_smarty_tpl) {
 ?><html>
 <head>
 

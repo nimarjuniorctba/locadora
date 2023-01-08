@@ -15,9 +15,9 @@
 
 	<div style="display:inline-block;margin-top:10px">
 
-			<small style="color:white;"><i class="large material-icons">store</i>Agenda</small>
-			<small style="color:white;"> <i class="large material-icons">sd_card</i> Cadastros</small>
-			<small style="color:white;"> <i class="large material-icons">settings</i> Configuraçoes</small>
+			<small style="color:white;"><i class="large material-icons">store</i><a href="agenda.php" style="text-decoration:none;color:white;">Agenda</a></small>
+			<small style="color:white;"> <i class="large material-icons">sd_card</i>Cadastros</small>
+			<small style="color:white;"> <i class="large material-icons">settings</i><a href="configuracoes.php" style="text-decoration:none;color:white;">Configuraçoes</a></small>
 
 	</div>
 
