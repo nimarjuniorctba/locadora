@@ -29,9 +29,9 @@
 		<td>			
 				<br>
 				<div style="display:flex;">
-					<div style="margin-right:5px;"><a rel="modal:open" href="#locacao-nova"><button type="button" class="btn btn-success btn-novo-locacao"><i class="large material-icons">shopping_cart</i>Nova locação</button></a></div>
-					<div style="margin-right:5px;"><button type="button" class="btn btn-info btn-clientes"><i class="large material-icons">person_add</i>Clientes</button></div>
-					<div style="margin-right:5px;"><button type="button" class="btn btn-secondary btn-titulos"><i class="large material-icons">local_movies</i>Titulos</button></div>
+					<div style="margin-right:5px;"><a rel="modal:open" href="#locacao-nova"><button  class="btn btn-success btn-novo-locacao"><i class="large material-icons">shopping_cart</i>Nova locação</button></a></div>
+					<div style="margin-right:5px;"><button  class="btn btn-info btn-clientes"><i class="large material-icons">person_add</i>Clientes</button></div>
+					<div style="margin-right:5px;"><button  class="btn btn-secondary btn-titulos"><i class="large material-icons">local_movies</i>Titulos</button></div>
 				</div>
 				<br>
 				<br>
@@ -47,33 +47,19 @@
 						</tr>
 					  </thead>
 					  <tbody>
-				
+					  
+					  
+					  {foreach $array_locacao item=$locacao}
 						<tr>
-						  <th scope="row">01</th>						 
-						  <td>luis felipes miguel santos de limas soares guimaraes</td>						  
-						  <td>07/01/2023</td>
-						  <td>07/01/2023</td>
+						  <th scope="row">{$locacao.id}</th>						 
+						  <td>{$locacao.nome}</td>						  
+						  <td>{$locacao.data_retirada}</td>
+						  <td>{$locacao.data_previsao}</td>
 						  <td>
-                            <a rel="modal:open" href="#locacao-visualizar"><button type="button" class="btn btn-dark" ><i class="medium material-icons" style="font-size: 16px;">visibility</i></button></a>
+                            <a rel="modal:open" href="#locacao-visualizar" class="resetaFomulario" ><button  class="btn btn-dark" ><i class="medium material-icons" style="font-size: 16px;">visibility</i></button></a>
 						</tr>
-				
-						<tr>
-						  <th scope="row">02</th>						 
-						  <td>luis felipes miguel santos de limas soares guimaraes</td>						  
-						  <td>07/01/2023</td>
-						  <td>07/01/2023</td>
-						  <td>
-                            <a rel="modal:open" href="#locacao-visualizar"><button type="button" class="btn btn-dark" ><i class="medium material-icons" style="font-size: 16px;">visibility</i></button></a>
-						</tr>
-				
-						<tr>
-						  <th scope="row">03</th>						 
-						  <td>luis felipes miguel santos de limas soares guimaraes</td>						  
-						  <td>07/01/2023</td>
-						  <td>07/01/2023</td>
-						  <td>
-                            <a rel="modal:open" href="#locacao-visualizar"><button type="button" class="btn btn-dark" ><i class="medium material-icons" style="font-size: 16px;">visibility</i></button></a>
-						</tr>						
+						{/foreach}					  
+								
 					  </tbody>
 					</table>
 					</div>

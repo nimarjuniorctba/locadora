@@ -41,8 +41,8 @@
 						  <td>{$cliente.nome}</td>
 						  <td>{$cliente.email}</td>
 						  <td>
-                                                      <button type="button" class="btn btn-info btn-editar" data-iduser={$cliente.iduser} ><i class="medium material-icons" style="font-size: 16px;">create</i></button>
-                                                      <button type="button" class="btn btn-danger btn-excluir" data-iduser={$cliente.iduser}><i class="medium material-icons" style="font-size: 16px;">delete</i></button>                                                                                                          </td>
+                                                      <button  class="btn btn-info btn-editar" data-iduser={$cliente.iduser} ><i class="medium material-icons" style="font-size: 16px;">create</i></button>
+                                                      <button  class="btn btn-danger btn-excluir" data-iduser={$cliente.iduser}><i class="medium material-icons" style="font-size: 16px;">delete</i></button>                                                                                                          </td>
 						</tr>
 						{/foreach}
 					  </tbody>
