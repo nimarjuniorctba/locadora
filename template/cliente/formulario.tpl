@@ -23,7 +23,8 @@
 <table class="table border" style="width:94%;margin-top:-1;margin-left: 3%;">
 
 	<tr>
-		<td>			
+		<td>	
+			<div>{$mensagem|default:''}</div>
 				<br>
 					<div class="table-responsive-sm">
 					<form name="form" method="POST">

@@ -18,7 +18,24 @@ var email					=	$("#cli_email");
 
 		if(confirm("Deseja realmente excluir ?")){
 			
-			alert("excluindo");
+			//alert($(this).attr('data-iduser',));
+			
+			$.ajax({
+					url : 'requisicoes_apagar.php',
+					data : { 	opcao			:	'cliente', 
+								id 		: 	$(this).attr('data-iduser',)
+
+							},
+					type : 'POST',
+					dataType : 'json',
+					success : function(json){
+								if(json.status){
+									//caso de certo muda telas
+									window.location.reload(true);
+								}
+							}
+			});				
+			
 		}
 
 	});	

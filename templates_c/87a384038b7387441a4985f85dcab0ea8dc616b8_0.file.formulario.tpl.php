@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2023-01-07 20:09:02
+/* Smarty version 4.1.0, created on 2023-01-10 00:45:47
   from 'C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\Diversos\locadora\template\cliente\formulario.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63b9c34ed5bc31_48763069',
+  'unifunc' => 'content_63bca72b436989_88523626',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '87a384038b7387441a4985f85dcab0ea8dc616b8' => 
     array (
       0 => 'C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\Diversos\\locadora\\template\\cliente\\formulario.tpl',
-      1 => 1673113637,
+      1 => 1673307940,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:topo.tpl' => 1,
   ),
 ),false)) {
-function content_63b9c34ed5bc31_48763069 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63bca72b436989_88523626 (Smarty_Internal_Template $_smarty_tpl) {
 ?><html>
 <head>
 
@@ -50,7 +50,9 @@ function content_63b9c34ed5bc31_48763069 (Smarty_Internal_Template $_smarty_tpl)
 <table class="table border" style="width:94%;margin-top:-1;margin-left: 3%;">
 
 	<tr>
-		<td>			
+		<td>	
+			<div><?php echo (($tmp = $_smarty_tpl->tpl_vars['mensagem']->value ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+</div>
 				<br>
 					<div class="table-responsive-sm">
 					<form name="form" method="POST">

@@ -1,51 +1,88 @@
 <?php
 
 require_once 'smarty/config.ini.php';
+require_once 'classes/autoload.class.php';
 
-$pagina =   new stdClass();
+$aclientes          =   new acesso_clientes();
+$pagina             =   new stdClass();
+$sessions           =   new Sessions();
+
 
 $acao=isset($_GET['acao'])?$_GET['acao']:'listar';
 
-
 $pagina->acao   =   $acao;
 
+$pdo = MySQL_PDO::conexao();
 
 //var_dump($_REQUEST);
 //exit;
 
+if(isset($_POST['submit'])&&($_POST['submit']=='cadastrar' || $_POST['submit']=='alterar')){
+  
+    if($_POST['submit']=='cadastrar'){
+        $cliente    =   new Clientes();
+        $cliente->setNome($_POST['cli_nome']);
+        $cliente->setEmail($_POST['cli_email']);
+
+        $cadastra = $aclientes->cadastraDados($pdo, $cliente);    
+        if(!$cadastra==false){
+           $smarty->assign('mensagem','<div class="certo">Cliente cadastrado com sucesso!</div>');
+        }else{
+           $smarty->assign('mensagem','<div class="errado">Não foi possivel cadastrar e-mail ja cadastrado</div>>');         
+        }
+    }else{
+        $cliente    =   new Clientes();
+        $cliente->setId($_GET['id']);
+        $cliente->setNome($_POST['cli_nome']);
+        $cliente->setEmail($_POST['cli_email']);
+        $cadastra = $aclientes->atualizaDados($pdo, $cliente);   
+        if(!$cadastra==false){
+           $smarty->assign('mensagem','<div class="certo">Cliente atualizado com sucesso!</div>');
+        }else{
+           $smarty->assign('mensagem','<div class="errado">Não foi possivel atualizar e-mail ja cadastrado</div>');         
+        }
+    }    
+}
+
 if($acao=='alterar'){
     
     $id=isset($_GET['id'])?$_GET['id']:'';    
-    
-    $cliente =   new stdClass();
-    
-    $cliente->id  =   $id;
-    $cliente->nome  =   "Cliente teste";
-    $cliente->email  =   "cliente@teste.com.br";
-    
-    
-    $smarty->assign('cliente',$cliente);
+        
+    $retorna_cliente   =    $aclientes->retornaDados($pdo, 'id', $id);
+    if(is_object($retorna_cliente)){      
+        
+        $cliente            =   new stdClass();
+        
+        $cliente->id        =   $retorna_cliente->getId();
+        $cliente->nome      =   $retorna_cliente->getNome();
+        $cliente->email     =   $retorna_cliente->getEmail();    
+        
+        $smarty->assign('cliente',$cliente);
+    }
     
 }
 
 if($acao=='listar'){
     
 
-    $array_cliente[0]["iduser"]  =   "01";
-    $array_cliente[0]["nome"]  =   "Cliente teste";
-    $array_cliente[0]["email"]  =   "cliente@teste.com.br";
+    $retorna_clientes = $aclientes->listarDados($pdo,'todos');
+    if(is_array($retorna_clientes)){
+        
+        for($i=0;$i<count($retorna_clientes);$i++){
+            
+            $array_cliente[$i]["iduser"]  =   $retorna_clientes[$i]->getId();
+            $array_cliente[$i]["nome"]  =   $retorna_clientes[$i]->getNome();
+            $array_cliente[$i]["email"]  =   $retorna_clientes[$i]->getEmail();            
+            
+        }
+        
+         $smarty->assign('array_cliente',$array_cliente);
+        
+    }
+  
     
     
-    $array_cliente[1]["iduser"]  =   "02";
-    $array_cliente[1]["nome"]  =   "Cliente teste1";
-    $array_cliente[1]["email"]  =   "cliente1@teste.com.br";
-    
-    $array_cliente[2]["iduser"]  =   "03";
-    $array_cliente[2]["nome"]  =   "Cliente teste03";
-    $array_cliente[2]["email"]  =   "cliente03@teste.com.br";    
-    
-    
-    $smarty->assign('array_cliente',$array_cliente);
+   
     
 }
 
