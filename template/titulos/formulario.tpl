@@ -22,8 +22,9 @@
 </ul>
 <table class="table border" style="width:94%;margin-top:-1;margin-left: 3%;">
 
-	<tr>
-		<td>			
+	<tr>	
+		<td>	
+			<div>{$mensagem|default:''}</div>		
 				<br>
 					<div class="table-responsive-sm">
 					<form name="form" method="POST">
@@ -64,20 +65,7 @@
 							  
 							  </td>
 							</tr>							
-							<tr>
-						{if $pagina->acao=='alterar'}							
-							  <td>Status<span class="obrigatorio">*<span></td>
-							  <td>
-							  
-									<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-									  <option value="0" {if $cliente->status=='Ativo'}selected{/if}>Ativo</option>
-									  <option value="1" {if $cliente->status=='Sem estoque'}selected{/if}>Sem estoque</option>
-									  <option value="2" {if $cliente->status=='Desativado'}selected{/if}>Desativado</option>
-									</select>
-							  
-							  </td>
-							</tr>
-						{/if}							
+							<tr>						
 							<tr>
 								<td scope="col"  colspan="2">
 									<span style="float:right;"><button type="submit" name="submit" id="submit" value="{$pagina->acao}" class="btn btn-success">{if $pagina->acao=='cadastrar'}Cadastrar{else}Alterar{/if}</button></span>

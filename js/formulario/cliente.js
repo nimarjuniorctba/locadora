@@ -17,9 +17,7 @@ var email					=	$("#cli_email");
 	$('.btn-excluir').click(function(){
 
 		if(confirm("Deseja realmente excluir ?")){
-			
-			//alert($(this).attr('data-iduser',));
-			
+
 			$.ajax({
 					url : 'requisicoes_apagar.php',
 					data : { 	opcao			:	'cliente', 
@@ -30,7 +28,6 @@ var email					=	$("#cli_email");
 					dataType : 'json',
 					success : function(json){
 								if(json.status){
-									//caso de certo muda telas
 									window.location.reload(true);
 								}
 							}

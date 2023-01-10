@@ -20,7 +20,23 @@ var valor					=	$("#tit_valor");
 
 		if(confirm("Deseja realmente excluir o titulo?")){
 			
-			alert("excluindo titulo");
+			$.ajax({
+					url : 'requisicoes_apagar.php',
+					data : { 	opcao			:	'titulos', 
+								id 		: 	$(this).attr('data-iduser',)
+
+							},
+					type : 'POST',
+					dataType : 'json',
+					success : function(json){
+								if(json.status){
+									//caso de certo muda telas
+									window.location.reload(true);
+								}
+							}
+			});	
+
+
 		}
 
 	});	

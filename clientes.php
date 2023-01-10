@@ -5,17 +5,11 @@ require_once 'classes/autoload.class.php';
 
 $aclientes          =   new acesso_clientes();
 $pagina             =   new stdClass();
-$sessions           =   new Sessions();
-
 
 $acao=isset($_GET['acao'])?$_GET['acao']:'listar';
-
 $pagina->acao   =   $acao;
 
 $pdo = MySQL_PDO::conexao();
-
-//var_dump($_REQUEST);
-//exit;
 
 if(isset($_POST['submit'])&&($_POST['submit']=='cadastrar' || $_POST['submit']=='alterar')){
   
@@ -28,7 +22,7 @@ if(isset($_POST['submit'])&&($_POST['submit']=='cadastrar' || $_POST['submit']==
         if(!$cadastra==false){
            $smarty->assign('mensagem','<div class="certo">Cliente cadastrado com sucesso!</div>');
         }else{
-           $smarty->assign('mensagem','<div class="errado">Não foi possivel cadastrar e-mail ja cadastrado</div>>');         
+           $smarty->assign('mensagem','<div class="errado">Não foi possivel cadastrar e-mail ja cadastrado</div>');         
         }
     }else{
         $cliente    =   new Clientes();
@@ -39,7 +33,7 @@ if(isset($_POST['submit'])&&($_POST['submit']=='cadastrar' || $_POST['submit']==
         if(!$cadastra==false){
            $smarty->assign('mensagem','<div class="certo">Cliente atualizado com sucesso!</div>');
         }else{
-           $smarty->assign('mensagem','<div class="errado">Não foi possivel atualizar e-mail ja cadastrado</div>');         
+           $smarty->assign('mensagem','<div class="errado">Não foi possivel atualizar.</div>');         
         }
     }    
 }
@@ -64,7 +58,6 @@ if($acao=='alterar'){
 
 if($acao=='listar'){
     
-
     $retorna_clientes = $aclientes->listarDados($pdo,'todos');
     if(is_array($retorna_clientes)){
         
@@ -79,10 +72,6 @@ if($acao=='listar'){
          $smarty->assign('array_cliente',$array_cliente);
         
     }
-  
-    
-    
-   
     
 }
 
