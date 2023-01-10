@@ -9,7 +9,7 @@ $opcao=isset($_POST['opcao'])?$_POST['opcao']:'';
         
         case 'locacao_cadastrar' :
             
-            
+          var_dump($_REQUEST); 
            //     echo "cadastrar - ".count($_POST['filmes']);
             $dados['status'] = true;
                  break;

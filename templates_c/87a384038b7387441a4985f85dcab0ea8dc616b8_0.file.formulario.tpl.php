@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2023-01-10 00:45:47
+/* Smarty version 4.1.0, created on 2023-01-10 04:55:11
   from 'C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\Diversos\locadora\template\cliente\formulario.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_63bca72b436989_88523626',
+  'unifunc' => 'content_63bce19f3145c8_28936846',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '87a384038b7387441a4985f85dcab0ea8dc616b8' => 
     array (
       0 => 'C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\Diversos\\locadora\\template\\cliente\\formulario.tpl',
-      1 => 1673307940,
+      1 => 1673322846,
       2 => 'file',
     ),
   ),
@@ -21,11 +21,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:topo.tpl' => 1,
   ),
 ),false)) {
-function content_63bca72b436989_88523626 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63bce19f3145c8_28936846 (Smarty_Internal_Template $_smarty_tpl) {
 ?><html>
 <head>
 
-<title>Projeto Locadora</title>
+<title><?php echo $_smarty_tpl->tpl_vars['pagina']->value->empresa_nome;?>
+</title>
 
 <head>
 <body>

@@ -1,7 +1,7 @@
 <html>
 <head>
 
-<title>Projeto Locadora</title>
+<title>{$pagina->empresa_nome}</title>
 
 <head>
 <body>

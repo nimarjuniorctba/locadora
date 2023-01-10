@@ -3,6 +3,7 @@
 require_once 'smarty/config.ini.php';
 require_once 'classes/autoload.class.php';
 
+$aconfiguracoes     =   new acesso_configuracoes();
 $aclientes          =   new acesso_clientes();
 $pagina             =   new stdClass();
 
@@ -74,6 +75,11 @@ if($acao=='listar'){
     }
     
 }
+
+    $retorna_configuracoes = $aconfiguracoes->retornaDados($pdo, 'id', 1);
+    if(is_object($retorna_configuracoes)){
+        $pagina->empresa_nome =   $retorna_configuracoes->getEmpresa();
+    }
 
 switch($acao){
     case'alterar':            

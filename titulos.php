@@ -3,7 +3,8 @@
 require_once 'smarty/config.ini.php';
 require_once 'classes/autoload.class.php';
 
-$atitulos           =   new acesso_titulos();
+$atitulos                =   new acesso_titulos();
+$aconfiguracoes          =   new acesso_configuracoes();
 $pagina =   new stdClass();
 
 $acao=isset($_GET['acao'])?$_GET['acao']:'listar';
@@ -62,9 +63,7 @@ if($acao=='alterar'){
 }
 
 if($acao=='listar'){
-    
-
-    
+        
     $retorna_titulos = $atitulos->listarDados($pdo,'todos');
     if(is_array($retorna_titulos)){
         
@@ -81,11 +80,14 @@ if($acao=='listar'){
          $smarty->assign('array_titulos',$array_titulos);
         
     }      
-    
-    
-    $smarty->assign('array_titulos',$array_titulos);
-    
+        
+    $smarty->assign('array_titulos',$array_titulos);    
 }
+
+    $retorna_configuracoes = $aconfiguracoes->retornaDados($pdo, 'id', 1);
+    if(is_object($retorna_configuracoes)){
+        $pagina->empresa_nome =   $retorna_configuracoes->getEmpresa();
+    }
 
     switch($acao){
         case'alterar':            

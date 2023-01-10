@@ -144,7 +144,7 @@ $(document).ready(function(){
 			
 		});
 
-		total = "R$ "+total;
+		total = "R$ "+total.toFixed(2);;
 
 		//console.log(total.replace('.',','));	
 		$("#loc_cad_total").html(total.replace('.',','));	

@@ -1,15 +1,22 @@
 <?php
 
 require_once 'smarty/config.ini.php';
+require_once 'classes/autoload.class.php';
 
+$aconfiguracoes     =   new acesso_configuracoes();
 $pagina =   new stdClass();
+
+$pdo = MySQL_PDO::conexao();
 
 $acao=isset($_GET['acao'])?$_GET['acao']:'ativas';
 
-
-$pagina->dataHoje   =   date('09/01/2023');
-$pagina->dataPrevista   =  "15/01/2023";
-$pagina->valorMulta   =   "R$ 22,15";
+$retorna_configuracoes = $aconfiguracoes->retornaDados($pdo, 'id', 1);
+if(is_object($retorna_configuracoes)){
+    $pagina->empresa_nome       =   $retorna_configuracoes->getEmpresa();
+    $pagina->dataHoje           =   date('d/m/Y');
+    $pagina->dataPrevista       =  date('d/m/Y', strtotime('+'.$retorna_configuracoes->getPrazo().' days'));
+    $pagina->valorMulta         =   "R$ ".str_replace(".", ",", $retorna_configuracoes->getMulta());    
+}
 
 
 if($acao=='ativas'){
@@ -94,6 +101,7 @@ if($acao=='historico'){
     $smarty->assign('array_historico',$array_historico);
     
 }
+
 
          
 $pagina->titulo =   "Agenda";

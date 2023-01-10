@@ -10,8 +10,6 @@ $pagina =   new stdClass();
 
 $pdo = MySQL_PDO::conexao();
 
-//var_dump($_REQUEST);
-//exit();
   
 if(isset($_POST['submit'])&&$_POST['submit']=='alterar'){
     
@@ -40,6 +38,7 @@ if(isset($_POST['submit'])&&$_POST['submit']=='alterar'){
         $configuracoes->empresa_nome  =   $retorna_configuracoes->getEmpresa();        
                 
         $smarty->assign('configuracoes',$configuracoes);
+        $pagina->empresa_nome =   $retorna_configuracoes->getEmpresa();
     }
 
 

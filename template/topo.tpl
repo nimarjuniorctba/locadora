@@ -16,7 +16,8 @@
 	<div style="display:inline-block;margin-top:10px">
 
 			<small style="color:white;"><i class="large material-icons">store</i><a href="agenda.php" style="text-decoration:none;color:white;">Agenda</a></small>
-			<small style="color:white;"> <i class="large material-icons">sd_card</i>Cadastros</small>
+			<small style="color:white;"> <i class="large material-icons">person_add</i><a href="clientes.php" style="text-decoration:none;color:white;">Clientes</a></small>
+			<small style="color:white;"> <i class="large material-icons">local_movies</i><a href="titulos.php" style="text-decoration:none;color:white;">Titulos</a></small>
 			<small style="color:white;"> <i class="large material-icons">settings</i><a href="configuracoes.php" style="text-decoration:none;color:white;">Configuraçoes</a></small>
 
 	</div>
