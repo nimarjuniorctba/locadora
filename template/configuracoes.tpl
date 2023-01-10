@@ -16,7 +16,8 @@
 <table class="table border" style="width:94%;margin-top:-1;margin-left: 3%;">
 
 	<tr>
-		<td>			
+		<td>	
+			<div>{$mensagem|default:''}</div>		
 				<br>
 					<div class="table-responsive-sm">
 					<form name="form" method="POST">
@@ -31,14 +32,14 @@
 							<tr>
 							  <td>Valor da Multa(por dia)<span class="obrigatorio">*<span></td>
 							  <td>
-								<input type="text" class="form-control" id="con_multa" name="con_multa" value="{$configuracoes->multa}">
+								<input type="text" class="form-control" id="con_multa" name="con_multa" value="{$configuracoes->multa|default:'2,00'}">
 							  </td>
 							</tr>
 							<tr>
 							  <td>Prazo de entrega(por dia)<span class="obrigatorio">*<span></td>
 							  <td>
 							  
-									<input type="text" class="form-control" id="con_prazo" name="con_prazo" value="{$configuracoes->prazo_entrega}" >						  
+									<input type="text" class="form-control" id="con_prazo" name="con_prazo" value="{$configuracoes->prazo_entrega|default:'2'}" >						  
 							  
 							  </td>
 							</tr>							
@@ -46,14 +47,14 @@
 							  <td>Nome da empresa<span class="obrigatorio">*<span></td>
 							  <td>
 							  
-									<input type="text" class="form-control" id="con_nome" name="con_nome" value="{$configuracoes->empresa_nome}" >						  
+									<input type="text" class="form-control" id="con_nome" name="con_nome" value="{$configuracoes->empresa_nome|default:'Projeto Locadora'}" >						  
 							  
 							  </td>
 							</tr>							
 													
 							<tr>
 								<td scope="col"  colspan="2">
-									<span style="float:right;"><button type="submit" name="submit" id="submit" value="{$pagina->acao}" class="btn btn-success">Alterar</button></span>
+									<span style="float:right;"><button type="submit" name="submit" id="submit" value="alterar" class="btn btn-success">Alterar</button></span>
 								</td>
 							</tr>
 

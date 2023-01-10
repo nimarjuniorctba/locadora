@@ -24,7 +24,7 @@ var empresa					=	$("#con_nome");
 	});	
 	
 	function validaMulta(){		
-		 if(multa.val().length>2){
+		 if(multa.val().length>0){
 			multa.removeClass("errado").addClass("certo"); 
 			return true;	 
 		 }else{
@@ -34,7 +34,7 @@ var empresa					=	$("#con_nome");
 	}	
 	
 	function validaPrazo(){		
-		 if(prazo.val().length>2){
+		 if(prazo.val().length>0){
 			prazo.removeClass("errado").addClass("certo"); 
 			return true;	 
 		 }else{
