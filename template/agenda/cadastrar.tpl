@@ -51,7 +51,6 @@
 		</div>
 		<hr>		
 		<div>
-			<button  name="loc_cad_cancelar"  id="loc_cad_cancelar" class="btn btn-warning">Cancelar</button>
 			<button name="loc_cad_cadastrar"  id="loc_cad_cadastrar"class="btn btn-primary" style="float: right;">Cadastrar</button>
 		</div>		
 </div>

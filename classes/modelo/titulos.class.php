@@ -7,6 +7,8 @@ class Titulos{
     private $valor;
     private $quantidade;
     private $status;
+    
+    
     public function getId() {
         return $this->id;
     }

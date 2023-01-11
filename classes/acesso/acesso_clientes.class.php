@@ -26,7 +26,7 @@ class acesso_clientes extends admin{
 
                         $p_sql->execute();
                             if($p_sql->rowCount()>0){
-                                return $this->verificaDados($pdo, 'email', $objeto->getEmail());
+                                return $pdo->lastInsertId();                              
                             }else{
                                 return false;
                             }

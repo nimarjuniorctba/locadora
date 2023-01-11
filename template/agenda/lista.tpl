@@ -56,7 +56,7 @@
 						  <td>{$locacao.data_retirada}</td>
 						  <td>{$locacao.data_previsao}</td>
 						  <td>
-                            <a rel="modal:open" href="#locacao-visualizar" class="resetaFomulario" ><button  class="btn btn-dark" ><i class="medium material-icons" style="font-size: 16px;">visibility</i></button></a>
+                            <a rel="modal:open" href="#locacao-visualizar" class="carregaDadoslocacao" data-id="{$locacao.id}"><button  class="btn btn-dark" ><i class="medium material-icons" style="font-size: 16px;">visibility</i></button></a>
 						</tr>
 						{/foreach}					  
 								

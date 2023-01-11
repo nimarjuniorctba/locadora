@@ -10,6 +10,10 @@ $(document).ready(function(){
 	
 	$('.btn-novo-locacao').click(function(){		
 		resetaFormNovaLocacao();
+	});	
+	
+	$('.carregaDadoslocacao').click(function(){		
+		carregaDadoslocacao($(this).attr('data-id',));
 	});			
 	
 	$('#loc_cad_cadastrar').click(function(){
@@ -40,7 +44,8 @@ $(document).ready(function(){
 					url : 'requisicoes_agenda.php',
 					data : { 	opcao			:	'locacao_cadastrar', 
 								cliente 		: 	cliente,
-								filmes 			: 	filmes
+								filmes 			: 	filmes,
+								total 			: 	$("#loc_cad_total").text().replace('R$ ','').replace(',','.')
 
 							},
 					type : 'POST',
@@ -64,7 +69,10 @@ $(document).ready(function(){
 	
 	$('#loc_cad_finalizar').click(function(){
 		window.location.reload(true);
-	});		
+	});	
+
+
+	
 	
 	$('#adicionar-filme').click(function(){
 		
@@ -132,7 +140,37 @@ $(document).ready(function(){
 		$("#info").html("");	
 		$("#tela_inicial").show();
 		$("#tela_final").hide();		
-	}	
+	}
+
+	function carregaDadoslocacao(locacao){
+		
+
+			$.ajax({
+					url : 'requisicoes_agenda.php',
+					data : { 	opcao			:	'locacao_carregar', 
+								locacao 		: 	locacao
+							},
+					type : 'POST',
+					dataType : 'json',
+					success : function(json){
+								if(json.status){
+									
+									$("#ent_nome").val(json.nome);
+									$("#ent_email").val(json.email);
+									$("#ent_ini_multa").html(json.loc_valor_multa);	
+									$("#ent_ini_entrega").html(json.loc_dt_entrega);
+									$("#ent_ini_subtotal").html(json.loc_valor_subtotal	);
+									$("#ent_ini_diasatraso").html(json.diasemana);
+									$("#ent_multa").html(json.loc_valor_multa);
+									$("#ent_valortotal").html(json.loc_valor_total);
+									$("#loc_cli_his_forma_pgto").html(json.loc_forma_pgto);
+
+									
+								}
+							}
+			});	
+			
+		}	
 	
 	function calculaTotal(){
 		
@@ -140,7 +178,7 @@ $(document).ready(function(){
 
 		$(".itens-carrinho").each(function(){
 
-			total += parseFloat($(this).find(".item-valor").text().replace(',','.'));
+			total += parseFloat($(this).find(".item-valor").text().replace(',','.').replace('R$ ',''));
 			
 		});
 
