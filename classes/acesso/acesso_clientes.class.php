@@ -1,7 +1,7 @@
 <?php
 
 
-class acesso_clientes extends admin{
+class acesso_clientes extends clientes{
    
     
     public function cadastraDados( $pdo, clientes $objeto){

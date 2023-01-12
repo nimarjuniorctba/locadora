@@ -61,7 +61,7 @@ if($acao=='listar'){
     
     $retorna_clientes = $aclientes->listarDados($pdo,'todos');
     if(is_array($retorna_clientes)){
-        
+         $array_cliente = Array();
         for($i=0;$i<count($retorna_clientes);$i++){
             
             $array_cliente[$i]["iduser"]  =   $retorna_clientes[$i]->getId();

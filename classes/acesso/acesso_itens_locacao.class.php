@@ -61,7 +61,7 @@ class acesso_itens_locacao extends itens_locacao{
       
            switch ($tipo){
                case 'pedido':
-                   $sql .=      " WHERE itl_id_fk=:pedido "; 
+                   $sql .=      " WHERE loc_id_fk=:pedido "; 
                    $p_sql  =   $pdo->prepare($sql);
                    $p_sql->bindValue(":pedido", $valor, PDO::PARAM_STR);
                    break;

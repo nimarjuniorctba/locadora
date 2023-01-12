@@ -66,7 +66,7 @@ if($acao=='listar'){
         
     $retorna_titulos = $atitulos->listarDados($pdo,'todos');
     if(is_array($retorna_titulos)){
-        
+        $array_titulos = Array();
         for($i=0;$i<count($retorna_titulos);$i++){
             
             $array_titulos[$i]["iduser"]         =   $retorna_titulos[$i]->getId();
@@ -81,7 +81,7 @@ if($acao=='listar'){
         
     }      
         
-    $smarty->assign('array_titulos',$array_titulos);    
+  //  $smarty->assign('array_titulos',$array_titulos);    
 }
 
     $retorna_configuracoes = $aconfiguracoes->retornaDados($pdo, 'id', 1);

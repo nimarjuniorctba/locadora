@@ -72,6 +72,24 @@ if(is_object($retorna_configuracoes)){
 
             $dados['status'] = true;
                  break;
+            case 'locacao_finalizar' :
+                
+                $locacao    =   $_POST['locacao'];
+                 $retorna_locacao = $alocacao->retornaDados($pdo, 'id', $locacao);
+                if(is_object($retorna_locacao)){
+                   
+                    $retorna_locacao->setFormaPgto($_POST['formapgto']);
+                    $retorna_locacao->setValorTotal($retorna_locacao->getValorSubTotal()+$retorna_locacao->getValorMulta());
+                    $retorna_locacao->setDt_entrega(date("Y-m-d"));
+                    $retorna_locacao->setStatus("f");
+                    
+                    $finaliza = $alocacao->FinalizaLocacao($pdo, $retorna_locacao);
+                    
+                   // var_dump($finaliza);
+                    $dados['status'] = true;
+                }   
+                
+                break;
             case 'locacao_carregar' :
                 
                 
@@ -83,14 +101,37 @@ if(is_object($retorna_configuracoes)){
                     if(is_object($retorna_cliente)){                     
                             $dados['status']                    =   true;
                             $dados['nome']                      =  $retorna_cliente->getNome(); 
+                            $dados['id_locacao']                =  $locacao; 
                             $dados['email']                     =  $retorna_cliente->getEmail(); 
-                            $dados['loc_dt_retirada']           =  $retorna_locacao->getDt_retirada(); 
+                            $dados['loc_dt_retirada']            =  implode('/',array_reverse(explode('-', $retorna_locacao->getDt_retirada()))); 
+                            $dados['loc_dt_entrega']            =  implode('/',array_reverse(explode('-', $retorna_locacao->getDt_entrega()))); 
                             $dados['loc_dt_entrega_prevista']   =  $retorna_locacao->getDt_prevista(); 
-                            $dados['loc_valor_total']           =  $retorna_locacao->getValorTotal(); 
-                            $dados['loc_valor_multa']           =  '1';//$retorna_locacao->getValorMulta()!=''?$retorna_locacao->getValorMulta():' R$ 0,00'; 
-                            $dados['loc_valor_subtotal']        =  $retorna_locacao->getValorSubTotal(); 
-                            $dados['diasemana']                 =  "2 dias"; 
+                            $dados['loc_valor_total']           =  str_replace(".", ",", $retorna_locacao->getValorTotal()); 
+                            $dados['loc_valor_subtotal']        =  str_replace(".", ",", $retorna_locacao->getValorSubTotal()); 
                             $dados['loc_forma_pgto']            =  $retorna_locacao->getFormaPgto(); 
+                            $dados['loc_retirada']              =  implode('/',array_reverse(explode('-', $retorna_locacao->getDt_retirada()))); 
+                            
+                            if(strtotime($retorna_locacao->getDt_prevista()) < strtotime($retorna_locacao->getDt_entrega())){
+                                $dias_atraso =  strtotime($retorna_locacao->getDt_entrega()) - strtotime($retorna_locacao->getDt_prevista());
+                                $dias = floor($dias_atraso / (60 * 60 * 24));
+                                $dados['diasemana']                 =  $dias." dias"; 
+                                $dados['loc_valor_multa']           =  str_replace(".", ",", $dias*$retorna_configuracoes->getMulta());                                 
+                            }else{
+                                 $dados['diasemana']                 ='0 dias';
+                                 $dados['loc_valor_multa']           ='0,00';
+                            }   
+                            
+                            $lista_itens_locacao    =   $aitens_locacao->listarDados($pdo, 'pedido', $locacao);
+                            if(is_array($lista_itens_locacao)){
+                                 for($tr=0;$tr<count($lista_itens_locacao);$tr++){
+                                    
+                                    $retorna_titulos   =    $atitulos->retornaDados($pdo, 'id', $lista_itens_locacao[$tr]->getTitulo());
+                                    if(is_object($retorna_titulos)){      
+                                        $dados['loc_filmes']["nome"][$tr]           =   $retorna_titulos->getNome();   
+                                        $dados['loc_filmes']["valor"][$tr]           =   str_replace(".",",",$retorna_titulos->getValor());    
+                                    }                                      
+                                 }                                    
+                            }
                     }
                 }
 

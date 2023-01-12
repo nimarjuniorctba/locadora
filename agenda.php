@@ -28,6 +28,7 @@ if($acao=='ativas'){
     ##CARREGA CLIENTES
         $retorna_clientes = $aclientes->listarDados($pdo,'todos');
         if(is_array($retorna_clientes)){
+            $array_cliente = Array();
             for($i=0;$i<count($retorna_clientes);$i++){
                 $array_cliente[$i]["id"]  =   $retorna_clientes[$i]->getId();
                 $array_cliente[$i]["nome"]  =   $retorna_clientes[$i]->getNome();
@@ -41,7 +42,7 @@ if($acao=='ativas'){
 
     $retorna_titulos = $atitulos->listarDados($pdo,'todos');
     if(is_array($retorna_titulos)){
-        
+        $array_titulos = Array();
         for($i=0;$i<count($retorna_titulos);$i++){
             
             $array_titulos[$i]["id"]             =   $retorna_titulos[$i]->getId();
@@ -63,7 +64,7 @@ if($acao=='ativas'){
 }
 
 if($acao!='historico'){
-        
+    $array_locacao = Array();    
     $lista_locacao = $alocacao->listarDados($pdo,'ativas');
     //var_dump($lista_locacao);
     if(is_array($lista_locacao)){
@@ -104,28 +105,6 @@ if($acao=='historico'){
 }
 
 
-//if($acao=='historico'){
-//
-//    $array_historico[0]["id"]  =   "01";
-//    $array_historico[0]["nome"]  =   "Cliente teste js";
-//    $array_historico[0]["data_retirada"]  =   "05/01/2023";
-//    $array_historico[0]["data_devolucao"]  =   "15/01/2023";
-//    
-//    
-//    $array_historico[1]["id"]  =   "02";
-//    $array_historico[1]["nome"]  =   "Cliente teste1";
-//    $array_historico[1]["data_retirada"]  =   "05/01/2023";
-//    $array_historico[1]["data_devolucao"]  =   "28/01/2023";
-//    
-//    $array_historico[2]["id"]  =   "03";
-//    $array_historico[2]["nome"]  =   "Cliente teste03";
-//    $array_historico[2]["data_retirada"]  =   "05/01/2023";
-//    $array_historico[2]["data_devolucao"]  =   "31/01/2023";  
-//    
-//    
-//    $smarty->assign('array_historico',$array_historico);
-//    
-//}
 
 
          

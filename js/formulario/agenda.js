@@ -55,14 +55,12 @@ $(document).ready(function(){
 									//caso de certo muda telas
 									$("#tela_inicial").hide();
 									$("#tela_final").show();//tela de sucesso
+									window.location.reload(true);
 								}else{
 									$("#info").html("<label style='color:red;'>Erro ao fazer cadastro, título indisponível</label>");
 								}
 							}
 			});				
-		
-		
-		
 		
 		
 	});		
@@ -115,6 +113,27 @@ $(document).ready(function(){
 		$("#loc_finalizar").attr("disabled", false);
 		
 	});		
+	
+	$('#loc_receber_pgto').click(function(){
+
+$.ajax({
+					url : 'requisicoes_agenda.php',
+					data : { 	opcao			:	'locacao_finalizar', 
+								locacao 		: 	$("#id_locacao").val(),
+								formapgto 		: 	$("#loc_cli_forma_pgto").val()
+							},
+					type : 'POST',
+					dataType : 'json',
+					success : function(json){
+								if(json.status){
+									
+									window.location.reload();
+
+								}
+							}
+			});	
+
+	});		
 
 	$('#loc_finalizar').click(function(){
 		
@@ -143,7 +162,7 @@ $(document).ready(function(){
 	}
 
 	function carregaDadoslocacao(locacao){
-		
+	resetaFormNovaLocacao()	
 
 			$.ajax({
 					url : 'requisicoes_agenda.php',
@@ -157,13 +176,29 @@ $(document).ready(function(){
 									
 									$("#ent_nome").val(json.nome);
 									$("#ent_email").val(json.email);
-									$("#ent_ini_multa").html(json.loc_valor_multa);	
+									$("#ent_ini_multa").html("R$ "+json.loc_valor_multa);	
 									$("#ent_ini_entrega").html(json.loc_dt_entrega);
-									$("#ent_ini_subtotal").html(json.loc_valor_subtotal	);
+									$("#ent_ini_subtotal").html("R$ "+json.loc_valor_subtotal	);
 									$("#ent_ini_diasatraso").html(json.diasemana);
-									$("#ent_multa").html(json.loc_valor_multa);
-									$("#ent_valortotal").html(json.loc_valor_total);
+									$("#ent_multa").html("R$ "+json.loc_valor_multa);
+									$("#ent_valortotal").html("R$ "+json.loc_valor_total);
+									$("#ent_ini_total").html("R$ "+json.loc_valor_total);
 									$("#loc_cli_his_forma_pgto").html(json.loc_forma_pgto);
+									$("#ent_ini_retirada").html(json.loc_retirada);
+									$("#id_locacao").val(json.id_locacao);
+									
+									var html = '';
+									for(var tp=0;tp<json.loc_filmes.nome.length;tp++){
+										
+										html+='					<div>';
+										html+='						<label style="margin-right: 15px;margin-left: 42px;">'+(tp+1)+'</label>';
+										html+='						<label style="">'+json.loc_filmes.nome[tp]+'</label>';
+										html+='						<label style="float:right;">'+json.loc_filmes.valor[tp]+'</label>';
+										html+='					</div>';										
+										
+									}
+
+$("#lista-itens").html(html);									
 
 									
 								}

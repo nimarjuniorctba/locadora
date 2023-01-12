@@ -48,7 +48,7 @@
 						  <td>{$locacao.data_retirada}</td>
 						  <td>{$locacao.data_devolucao}</td>
 						  <td>
-                            <a rel="modal:open" href="#locacao-visualizar" class="resetaFomulario" ><button  class="btn btn-dark" ><i class="medium material-icons" style="font-size: 16px;">visibility</i></button></a>
+                            <a rel="modal:open" href="#locacao-visualizar" data-id="{$locacao.id}" class="carregaDadoslocacao" ><button  class="btn btn-dark" ><i class="medium material-icons" style="font-size: 16px;">visibility</i></button></a>
 						</tr>
 						{/foreach}
 						
@@ -64,11 +64,11 @@
 
 <div>
 			<label for="loc_cli_nome">Nome</label>
-			<input type="text" class="form-control">	
+			<input id="ent_nome" type="text" class="form-control">	
 		</div>
 		<div>
 			<label for="loc_cli_nome">Email</label>
-			<input type="text" class="form-control">	
+			<input  id="ent_email" type="text" class="form-control">	
 		</div>
 		<br>
 		<hr>		
@@ -81,53 +81,31 @@
 			</div>
 					<!-- ITENS -->
 			
-					<div>
-						<label style="margin-right: 15px;">0001</label>
-						<label style="">filme 01</label>
-						<label style="float:right;">12,50</label>
-					</div>
-					<div>
-						<label style="margin-right: 15px;">0002</label>
-						<label style="">filme 01</label>
-						<label style="float:right;">12,50</label>
-					</div>
-					<div>
-						<label style="margin-right: 15px;">0003</label>
-						<label style="">filme 01</label>
-						<label style="float:right;">12,50</label>
-					</div>
-					<div>
-						<label style="margin-right: 15px;">0004</label>
-						<label style="">filme 01</label>
-						<label style="float:right;">12,50</label>
-					</div>					
+					<div id="lista-itens">
+
+					</div>				
 
 					<!-- ITENS -->
 		</div>		
 		<div id="itens-carrinho">
 		</div>
 		<br>
-		<hr>
-		<div>
-			<div>
-				<label style="font-weight: 600;">Total:<span>R$ 120,25</span></label>
-				<label style="font-weight: 600;float: right;">Multa por dia:<span>R$ 120,25</span></label>
-			</div>			
-			<div>			
-				<label style="font-weight: 600;">Data de retirada:<span>05/01/2023</span></label>
-				<label style="font-weight: 600;float: right;">Data de entrega:<span>10/01/2023</span></label>
-			</div>
-		</div>
 
-			<div id="receber-pagamento" style="">
-				<hr>				
+		<div style="float: left;width: 100%;">
+			<div style="clear:both;"></div>
+				<label style="font-weight: 600;width: 100%;">Data de retirada:<span style="float: right;" id="ent_ini_retirada" >00/00/0000</span></label><div style="clear:both;"></div>
+				<label style="font-weight: 600;width: 100%;">Data de entrega:<span style="float: right;"  id="ent_ini_entrega">00/00/0000</span></label><div style="clear:both;"></div><div style="clear:both;"></div>
+			</div>
+<br>
+
+			<div id="receber-pagamento" style="">				
 				<div style="float: left;width: 100%;">
 					<div style="clear:both;"></div>
-					<label style="font-weight: 600;width: 100%;">Subtotal:<span style="float: right;">R$ 120,25</span></label><div style="clear:both;"></div>
-					<label style="font-weight: 600;width: 100%;">Dias em atraso:<span style="float: right;">2 dias</span></label><div style="clear:both;"></div>
-					<label style="font-weight: 600;width: 100%;">Multa por atraso:<span class="text-danger" style="float: right;">R$ 20,25</span></label><div style="clear:both;"></div>
-					<label style="font-weight: 600;width: 100%;">Total a pagar:<span class="text-success" style="float: right;">R$ 120,25</span></label><div style="clear:both;"></div>
-					<label style="font-weight: 600;width: 100%;">Forma de pagamento:<span class="text-success" style="float: right;">Dinheiro</span></label><div style="clear:both;"></div>
+					<label style="font-weight: 600;width: 100%;">Subtotal:<span style="float: right;" id="ent_ini_subtotal">R$ 0,00</span></label><div style="clear:both;"></div>
+					<label style="font-weight: 600;width: 100%;">Dias em atraso:<span style="float: right;"  id="ent_ini_diasatraso">0 dias</span></label><div style="clear:both;"></div>
+					<label style="font-weight: 600;width: 100%;">Multa por atraso:<span class="text-danger" style="float: right;" id="ent_multa">R$ 0,00</span></label><div style="clear:both;"></div>
+					<label style="font-weight: 600;width: 100%;">Total a pagar:<span class="text-success" style="float: right;" id="ent_valortotal">R$ 0,00</span></label><div style="clear:both;"></div>
+					<label style="font-weight: 600;width: 100%;">Forma de pagamento:<span class="text-success" style="float: right;"  id="loc_cli_his_forma_pgto" ></span></label><div style="clear:both;"></div>
 				<br>
 				</div>			
 			</div>	

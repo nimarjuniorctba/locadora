@@ -64,6 +64,7 @@ public function FinalizaLocacao( $pdo, locacao $objeto){
                                                     loc_dt_entrega         =   :entrega
                                     ,               loc_valor_multa        =   :multa
                                     ,               loc_valor_total        =   :total
+                                    ,               loc_status        =   :status
                                     ,               loc_forma_pgto         =   :pgto
                                                                                         WHERE loc_id=:id   ";
             $p_sql  =   $pdo->prepare($sql);
@@ -72,7 +73,7 @@ public function FinalizaLocacao( $pdo, locacao $objeto){
             $p_sql->bindValue(":status",'f',PDO::PARAM_STR);
             $p_sql->bindValue(":total",$objeto->getValorTotal(),PDO::PARAM_STR);
             $p_sql->bindValue(":multa",$objeto->getValorMulta(),PDO::PARAM_STR);
-            $p_sql->bindValue(":subtotal",$objeto->getValorSubTotal(),PDO::PARAM_STR);
+            $p_sql->bindValue(":pgto",$objeto->getFormaPgto(),PDO::PARAM_STR);
             $p_sql->bindValue(":id",$objeto->getId(),PDO::PARAM_INT);
 
             $p_sql->execute();
