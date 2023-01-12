@@ -11,6 +11,8 @@ Sites auxiliares
 Icones : https://materializecss.com/icons.html
 
 
+Grafico de Gantt: arquivo: Grafico.xlsx
+
  
  
 PASSO A PASSO PARA A  INSTALAÇÂO
